@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<div class="flex flex-col items-center">
+<h1 class="text-2xl">Artists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Permalink</th>
+      <th>Bio</th>
+      <th>Formed at</th>
+      <th>Verified</th>
+      <th>Verified at</th>
+      <th>Avatar url</th>
+      <th>Cover photo url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <td><%= artist.name %></td>
+        <td><%= artist.permalink %></td>
+        <td><%= artist.bio %></td>
+        <td><%= artist.formed_at %></td>
+        <td><%= artist.verified %></td>
+        <td><%= artist.verified_at %></td>
+        <td><%= artist.avatar_url %></td>
+        <td><%= artist.cover_photo_url %></td>
+        <td><%= link_to 'Show', artist %></td>
+        <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
+        <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<button class="p-4 text-xl bg-blue-800 text-white rounded hover:bg-blue-500"><%= link_to 'New Artist', new_artist_path %></button>
+</div>
