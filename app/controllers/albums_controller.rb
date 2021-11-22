@@ -13,6 +13,7 @@ class AlbumsController < ApplicationController
   end
 
   def edit
+    @sample = 'sample'
   end
 
   def create
@@ -20,9 +21,9 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: "Album was successfully created." }
+        redirect_to @album, notice: "Album was successfully created." 
       else
-        format.html { render :new, status: :unprocessable_entity }
+        render :new, status: :unprocessable_entity 
       end
     end
   end
@@ -30,9 +31,9 @@ class AlbumsController < ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to @album, notice: "Album was successfully updated." }
+        redirect_to @album, notice: "Album was successfully updated." 
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity 
       end
     end
   end
@@ -40,7 +41,7 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
     respond_to do |format|
-      format.html { redirect_to albums_url, notice: "Album was successfully destroyed." }
+      redirect_to albums_url, notice: "Album was successfully destroyed." 
     end
   end
 
@@ -49,6 +50,7 @@ class AlbumsController < ApplicationController
       @album = Album.find(params[:id])
     end
 
+    # Only allow a list of trusted parameters through.
     def album_params
       params.require(:album).permit(:name, :released, :released_at, :cover_art_url, :length, :kind)
     end
