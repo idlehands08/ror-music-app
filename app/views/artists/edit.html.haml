@@ -1,5 +1,5 @@
-%h1 Editing Artist
-= render 'form', artist: @artist
-= link_to 'Show', @artist
-|
-= link_to 'Back', artists_path
+%div{class: 'flex flex-col items-center gap-2'}
+  %h1.font-bold.text-3xl Editing Artist
+  = render 'form', artist: @artist
+  = link_to 'Show', @artist
+  = link_to 'Back', artists_path

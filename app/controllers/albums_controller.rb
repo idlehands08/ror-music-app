@@ -13,7 +13,6 @@ class AlbumsController < ApplicationController
   end
 
   def edit
-    @sample = 'sample'
   end
 
   def create

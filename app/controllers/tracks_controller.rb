@@ -18,30 +18,24 @@ class TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
 
-    respond_to do |format|
-      if @track.save
-        format.html { redirect_to @track, notice: "Track was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @track.save
+      redirect_to @track, notice: "Track was successfully created." 
+    else
+      render :new, status: :unprocessable_entity 
     end
   end
 
   def update
-    respond_to do |format|
-      if @track.update(track_params)
-        format.html { redirect_to @track, notice: "Track was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @track.update(track_params)
+      redirect_to @track, notice: "Track was successfully updated." 
+    else
+      render :edit, status: :unprocessable_entity 
     end
   end
 
   def destroy
     @track.destroy
-    respond_to do |format|
-      format.html { redirect_to tracks_url, notice: "Track was successfully destroyed." }
-    end
+      redirect_to tracks_url, notice: "Track was successfully destroyed." 
   end
 
   private

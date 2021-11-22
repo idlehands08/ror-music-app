@@ -1,26 +1,17 @@
-%p#notice= notice
-%h1 Albums
-%table
-  %thead
-    %tr
-      %th Name
-      %th Released
-      %th Released at
-      %th Cover art url
-      %th Length
-      %th Kind
-      %th{:colspan => "3"}
-  %tbody
+%div{ class: 'flex flex-col items-center w-screen bg-gray-300 gap-4' }
+  %h1{ class: 'text-5xl' } Albums
+  %div{ class: 'flex flex-col gap-10 w-4/5'}
     - @albums.each do |album|
-      %tr
-        %td= album.name
-        %td= album.released
-        %td= album.released_at
-        %td= album.cover_art_url
-        %td= album.length
-        %td= album.kind
-        %td= link_to 'Show', album
-        %td= link_to 'Edit', edit_album_path(album)
-        %td= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Album', new_album_path
+      %div{ class:'flex flex-col items-center' }
+        %h2= album.name
+        %div{ class: 'flex flex-col gap-2 text-center' }
+          %h3= album.released
+          %p= album.released_at
+          %span= album.cover_art_url 
+          %span= album.length
+          %span= album.kind 
+        %div{ class: 'flex flex-row'}
+          %button{ class: 'py-2 px-4 bg-blue-300 rounded' }= link_to 'Show', album
+          %button{ class: 'py-2 px-4 bg-blue-300 rounded' }= link_to 'Edit', edit_album_path(album)
+          %button{ class: 'py-2 px-4 bg-blue-300 rounded' }= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }
+  %button{ class: 'py-2 px-4 bg-green-500 rounded' }= link_to 'New Album', new_album_path
