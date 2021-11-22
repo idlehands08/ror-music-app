@@ -1,9 +1,8 @@
 module.exports = {
-    purge: [
-        './app/**/*.html.erb',
-        './app/helps/**/*/rb',
-        './app/javascript/**/*.js',
-        './app/javascript/**/*.vue'
+    purge: ['./app//.html.erb',
+    './app/helpers/.erb',
+    './app/javascript//.js',
+    './app/javascript/**/.vue'
     ],
   darkMode: false, // or 'media' or 'class'
   theme: {

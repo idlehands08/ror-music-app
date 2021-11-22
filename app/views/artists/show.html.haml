@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @artist.name
+%p
+  %strong Permalink:
+  = @artist.permalink
+%p
+  %strong Bio:
+  = @artist.bio
+%p
+  %strong Formed at:
+  = @artist.formed_at
+%p
+  %strong Verified:
+  = @artist.verified
+%p
+  %strong Verified at:
+  = @artist.verified_at
+%p
+  %strong Avatar url:
+  = @artist.avatar_url
+%p
+  %strong Cover photo url:
+  = @artist.cover_photo_url
+= link_to 'Edit', edit_artist_path(@artist)
+|
+= link_to 'Back', artists_path

@@ -1,0 +1,14 @@
+%div{ class: 'flex flex-col items-center w-screen bg-gray-300 gap-4' }
+  %h1{ class: 'text-5xl' } Albums
+  %div{ class: 'flex flex-col gap-10 w-4/5'}
+    - @albums.each do |album|
+      %div{ class:'flex flex-col items-center' }
+        %h2= album.name
+        %div{ class: 'flex flex-row gap-2 text-center' }
+          %p= album.cover_art_url
+          %span= album.length
+          %span= album.kind 
+        %div{ class: 'flex flex-row'}
+          %button{ class: 'py-2 px-4 bg-blue-300 rounded' }= link_to 'Show', album
+          %button{ class: 'py-2 px-4 bg-blue-300 rounded' }= link_to 'Edit', edit_album_path(album)
+          %button{ class: 'py-2 px-4 bg-blue-300 rounded' }= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }

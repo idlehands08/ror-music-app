@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @track.name
+%p
+  %strong Url:
+  = @track.url
+%p
+  %strong Credits:
+  = @track.credits
+%p
+  %strong Length:
+  = @track.length
+%p
+  %strong Available:
+  = @track.available
+= link_to 'Edit', edit_track_path(@track)
+|
+= link_to 'Back', tracks_path

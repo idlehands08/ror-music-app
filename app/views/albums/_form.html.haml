@@ -1,0 +1,22 @@
+%div.flex.flex-col.items-center
+  = form_with(model: album) do |form|
+    .field
+      = form.label :name
+      = form.text_field :name
+    .field
+      = form.label :released
+      = form.check_box :released
+    .field
+      = form.label :released_at
+      = form.datetime_select :released_at
+    .field
+      = form.label :cover_art_url
+      = form.text_area :cover_art_url
+    .field
+      = form.label :length
+      = form.time_select :length
+    .field
+      = form.label :kind
+      = form.text_field :kind
+    .actions
+      = form.submit
