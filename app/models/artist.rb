@@ -1,4 +1,5 @@
 class Artist < ApplicationRecord
-    validates :name, :permalink, :bio, :formed_at, :verified, presence: true
+    validates :name, presence: true
 
+    has_one_attached :avatar
 end

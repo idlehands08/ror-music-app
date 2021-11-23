@@ -2,6 +2,11 @@
   %p#notice= notice
   %h1.font-bold.text-2xl
     = @artist.name
+  %div
+    - if @artist.avatar.attached?
+      = image_tag @artist.avatar, class: 'w-full'
+    - else
+      = @artist.avatar 
   %p
     %strong Permalink:
     = @artist.permalink
@@ -17,9 +22,6 @@
   %p
     %strong Verified at:
     = @artist.verified_at
-  %p
-    %strong Avatar url:
-    = @artist.avatar_url
   %p
     %strong Cover photo url:
     = @artist.cover_photo_url
