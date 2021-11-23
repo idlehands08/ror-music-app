@@ -4,9 +4,9 @@
     = @artist.name
   %div
     - if @artist.avatar.attached?
-      = image_tag @artist.avatar, class: 'w-full'
+      = image_tag @artist.avatar, class: 'rounded-full'
     - else
-      = @artist.avatar 
+      = 'No Avatar'
   %p
     %strong Permalink:
     = @artist.permalink
