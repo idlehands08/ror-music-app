@@ -2,16 +2,19 @@
   %h1{ class: 'text-5xl' } Artists
   %div{ class: 'flex flex-row gap-10 w-4/5'}
     - @artists.each do |artist|
-      %div{ class:'p-4 flex flex-col items-center border-2 border-solid rounded' }
+      %div{ class:'p-4 flex flex-col items-center border-2 gap-4 w-72 text-center border-solid rounded' }
         %h2.font-bold.text-2xl= artist.name
+        %div
+          - if artist.avatar.attached?
+            = image_tag artist.avatar, class: 'w-48 rounded-full'
+          - else
+            = 'No Avatar'
         %div{ class: 'flex flex-col gap-2 text-center' }
           %h3= artist.permalink
-          %p= artist.bio
-          %span= artist.formed_at 
-          %span= artist.verified 
-          %span= artist.verified_at 
-          %span= artist.avatar_url
-          %span= artist.cover_photo_url 
+          - if artist.verified?
+            %h1 Verified
+          - else  
+            %h1 Not Verified
         %div{ class: 'flex flex-row'}
           %button{ class: 'py-2 px-4 bg-blue-300 rounded' }= link_to 'Show', artist
           %button{ class: 'py-2 px-4 bg-blue-300 rounded' }= link_to 'Edit', edit_artist_path(artist)

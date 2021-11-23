@@ -1,29 +1,35 @@
-%div{class: 'flex flex-col items-center gap-2'}
-  %p#notice= notice
-  %h1.font-bold.text-2xl
-    = @artist.name
-  %div
-    - if @artist.avatar.attached?
-      = image_tag @artist.avatar, class: 'rounded-full'
+%div{class: 'flex flex-col text-gray-50 bg-black items-center gap-2'}
+  %div{class: 'w-screen bg-black flex flex-col items-center'}
+    - if @artist.cover_photo.attached?
+      = image_tag @artist.cover_photo, class: 'w-content'
     - else
-      = 'No Avatar'
-  %p
-    %strong Permalink:
-    = @artist.permalink
-  %p
-    %strong Bio:
-    = @artist.bio
-  %p
-    %strong Formed at:
-    = @artist.formed_at
-  %p
-    %strong Verified:
-    = @artist.verified
-  %p
-    %strong Verified at:
-    = @artist.verified_at
-  %p
-    %strong Cover photo url:
-    = @artist.cover_photo_url
-  = link_to 'Edit', edit_artist_path(@artist)
-  = link_to 'Back', artists_path
+      = 'No Cover Photo'
+  %h1.font-bold.text-5xl
+    = @artist.name
+  %div{class: 'flex flex-col items-center w-3/5 gap-4'}  
+    -# %div
+    -#   - if @artist.avatar.attached?
+    -#     = image_tag @artist.avatar, class: 'rounded-full'
+    -#   - else
+    -#     = 'No Avatar'
+    %p
+      %h2.font-bold Permalink:
+      = @artist.permalink
+    %div{class:'flex flex-col items-center gap-2 max-w-3xl'}
+      %h2.font-bold Biography
+      = @artist.bio
+    %div{class:'flex flex-col items-center gap-2'}
+      %h2.font-bold Formed at:
+      = @artist.formed_at
+    %div{class:'flex flex-col items-center gap-2'}
+      %h2.font-bold Verified:
+      = @artist.verified
+    %div{class:'flex flex-col items-center gap-2'}
+      %h2.font-bold Verified at:
+      = @artist.verified_at
+    %div{class:'flex flex-col items-center gap-2'}
+      %h2.font-bold Cover photo url:
+      = @artist.cover_photo_url
+    %div{ class: 'flex flex-row gap-2'}
+      %button{ class: 'py-2 px-4 bg-blue-300 rounded w-32' }= link_to 'Edit', edit_artist_path(@artist)
+      %button{ class: 'py-2 px-4 bg-blue-300 rounded w-32'}= link_to 'Delete', @artist, method: :delete, data: { confirm: 'Are you sure?' }

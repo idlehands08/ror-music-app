@@ -7,33 +7,35 @@
       %ul
         - artist.errors.each do |error|
           %li= error.full_message
-  %div{class: 'flex flex-col items-start gap-2 max-w-sm'}        
-    .flex.flex-row.gap-2.w-full
-      = form.label :avatar, class:'w-2/5'
-      = form.file_field :avatar, class:'border-2 border-solid px-2 w-full'
-    .flex.flex-row.gap-2.w-full
-      = form.label :name, class:'w-2/5'
-      = form.text_field :name, class:'border-2 border-solid px-2 w-full'
-    .flex.flex-row.gap-2.w-full
-      = form.label :permalink, class:'w-2/5'
-      = form.text_field :permalink, class:'border-2 border-solid w-full'
-    .flex.flex-row.gap-2.w-full
-      = form.label :bio, class:'w-2/5'
-      = form.text_area :bio, class:'border-2 border-solid w-full'
-    .flex.flex-row.gap-2.w-full
-      = form.label :formed_at, class:'w-2/5'
+  %div{class: 'flex flex-col items-start gap-2 max-w-5xl'}
+    %div{class: 'flex flex-row items-center gap-2'}        
+      %div{class: 'flex flex-col items-start gap-2 '}
+        .flex.flex-row.gap-2.w-full.items-center
+          = form.label :name, class:'w-2/5 font-bold'
+          = form.text_field :name, class:'border-2 rounded border-solid px-2 py-1 w-full'
+        .flex.flex-row.gap-2.w-full.items-center
+          = form.label :permalink, class:'w-2/5 font-bold'
+          = form.text_field :permalink, class:'border-2 rounded border-solid px-2 py-1 w-full'
+      %div{class: 'flex flex-col items-start gap-2 max-w-lg'}
+        .flex.flex-row.gap-2.w-full.items-center
+          = form.label :avatar, class:'w-2/5 font-bold'
+          = form.file_field :avatar, class:'border-2 rounded border-solid w-full py-1'
+        .flex.flex-row.gap-2.w-full.items-center
+          = form.label :cover_photo, class:'w-2/5 font-bold'
+          = form.file_field :cover_photo, class:'border-2 rounded border-solid py-1 w-full'
+    .flex.flex-row.gap-2.w-full.items-center
+      = form.label :bio, class:'w-2/5 font-bold'
+      = form.text_area :bio, class:'border-2 rounded border-solid px-2 py-1 w-full'
+    .flex.flex-row.gap-2.w-full.items-center.justify-between
+      = form.label :formed_at, class:'w-2/5 font-bold'
       = form.datetime_select :formed_at
-    .flex.flex-row.gap-2.w-full
-      = form.label :verified, class:'w-2/5'
-      = form.check_box :verified
-    .flex.flex-row.gap-2.w-full
-      = form.label :verified_at, class:'w-2/5'
-      = form.datetime_select :verified_at
-    .flex.flex-row.gap-2.w-full
-      = form.label :avatar_url, class:'w-2/5'
-      = form.text_area :avatar_url, class:'border-2 border-solid w-full'
-    .flex.flex-row.gap-2.w-full
-      = form.label :cover_photo_url, class:'w-2/5'
-      = form.text_area :cover_photo_url, class:'border-2 border-solid w-full'
+    %div{class:'flex flex-row items-start justify-between w-full'}
+      .flex.flex-row.gap-8.w-full.items-center
+        = form.label :verified, class:'font-bold'
+        = form.check_box :verified, class: 'h-5 w-5 text-green-600'
+      .flex.flex-row.gap-2.w-full.items-center.justify-between
+        = form.label :verified_at, class:'font-bold w-full'
+        = form.datetime_select :verified_at
+  %div{class: 'flex flex-row'}      
     .actions
       = form.submit
