@@ -7,23 +7,24 @@
       %ul
         - album.errors.each do |error|
           %li= error.full_message
-  .field
-    = form.label :name
-    = form.text_field :name
-  .field
-    = form.label :released
-    = form.check_box :released
-  .field
-    = form.label :released_at
-    = form.datetime_select :released_at
-  .field
-    = form.label :cover_art_url
-    = form.text_area :cover_art_url
-  .field
-    = form.label :length
-    = form.time_select :length
-  .field
-    = form.label :kind
-    = form.text_field :kind
-  .actions
-    = form.submit
+  %div{class: 'flex flex-col items-center gap-2 max-w-5xl'}        
+    %div{class: 'flex flex-col items-start gap-2 '}
+      .flex.flex-row.gap-2.w-full.items-center
+        = form.label :name, class:'w-2/5 font-bold'
+        = form.text_field :name, class:'border-2 rounded border-solid px-2 py-1 w-full'
+      .flex.flex-row.gap-2.w-full.items-center
+        = form.label :cover_art, class:'w-2/5 font-bold'
+        = form.file_field :cover_art, class:'border-2 rounded border-solid w-full py-1'
+      %div{class:'flex flex-row items-start justify-between w-full'}
+        .flex.flex-row.gap-8.w-full.items-center
+          = form.label :released, class:'font-bold'
+          = form.check_box :released, class: 'h-5 w-5 text-green-600'
+        .flex.flex-row.gap-2.w-full.items-center.justify-between
+          = form.label :released_at, class:'font-bold w-full'
+          = form.datetime_select :released_at
+      .flex.flex-row
+        = form.label :kind, class:'w-2/5 font-bold'
+        = form.text_field :kind, class:'border-2 rounded border-solid px-2 py-1 w-full'
+    %div{class: 'flex flex-col items-center text-center'}      
+      .actions
+        = form.submit

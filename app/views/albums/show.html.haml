@@ -1,22 +1,18 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @album.name
-%p
-  %strong Released:
-  = @album.released
-%p
-  %strong Released at:
-  = @album.released_at
-%p
-  %strong Cover art url:
-  = @album.cover_art_url
-%p
-  %strong Length:
-  = @album.length
-%p
-  %strong Kind:
-  = @album.kind
-= link_to 'Edit', edit_album_path(@album)
-|
-= link_to 'Back', albums_path
+%div{class: 'flex flex-col text-gray-50 bg-black items-center gap-2 pb-10 max-w-full'}
+  %div{class: 'w-screen bg-black flex flex-col items-center'}
+    - if @album.cover_art.attached?
+      = image_tag @album.cover_art, class: 'w-content'
+    - else
+      = 'No Cover Art'
+  %h1.font-bold.text-5xl
+    = @album.name
+  %div{class: 'flex flex-col items-center w-3/5 gap-4'}  
+    %p
+      %h2.font-bold Released:
+      = @album.released ? 'Released' : 'Not Released'
+    %div{class:'flex flex-col items-center gap-2'}
+      %h2.font-bold Kind:
+      = @album.kind
+    %div{ class: 'flex flex-row gap-2'}
+      %button{ class: 'py-2 px-4 bg-blue-400 rounded w-32' }= link_to 'Edit', edit_album_path(@album)
+      %button{ class: 'py-2 px-4 bg-blue-400 rounded w-32'}= link_to 'Back', albums_path

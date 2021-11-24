@@ -1,4 +1,4 @@
-%div{class: 'flex flex-col text-gray-50 bg-black items-center gap-2'}
+%div{class: 'flex flex-col text-gray-50 bg-black items-center gap-2 pb-10 max-w-full'}
   %div{class: 'w-screen bg-black flex flex-col items-center'}
     - if @artist.cover_photo.attached?
       = image_tag @artist.cover_photo, class: 'w-content'
@@ -31,5 +31,5 @@
       %h2.font-bold Cover photo url:
       = @artist.cover_photo_url
     %div{ class: 'flex flex-row gap-2'}
-      %button{ class: 'py-2 px-4 bg-blue-300 rounded w-32' }= link_to 'Edit', edit_artist_path(@artist)
-      %button{ class: 'py-2 px-4 bg-blue-300 rounded w-32'}= link_to 'Delete', @artist, method: :delete, data: { confirm: 'Are you sure?' }
+      %button{ class: 'py-2 px-4 bg-blue-400 rounded w-32' }= link_to 'Edit', edit_artist_path(@artist)
+      %button{ class: 'py-2 px-4 bg-blue-400 rounded w-32'}= link_to 'Delete', @artist, method: :delete, data: { confirm: 'Are you sure?' }
